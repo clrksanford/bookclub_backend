@@ -9,7 +9,7 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
-    book = BookSerializer()
+    book = BookSerializer(read_only=True)
 
     class Meta:
         model = Event
