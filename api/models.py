@@ -10,6 +10,6 @@ class Book(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=100)
-    book = models.ForeignKey(to=Book)
+    book = models.ForeignKey(to=Book, null=True, on_delete=models.SET_NULL)
     date = models.DateField()
     description = models.CharField(max_length=500)
