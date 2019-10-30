@@ -1,7 +1,9 @@
 from django.urls import path
+from rest_framework import routers
 from api import views
 
 
-urlpatterns = [
-    path('', views.index)
-]
+router = routers.SimpleRouter()
+router.register(r'events', views.EventViewSet)
+
+urlpatterns = router.urls

@@ -1,5 +1,8 @@
-from django.http import HttpResponse
+from rest_framework import viewsets
+from api.models import Event
+from api.serializers import EventSerializer
 
 
-def index(request):
-    return HttpResponse('Hi!')
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
