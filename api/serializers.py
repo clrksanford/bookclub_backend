@@ -9,7 +9,15 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
-    book = BookSerializer(read_only=True)
+    book = BookSerializer(many=False)
+
+    def create(self, validated_data):
+        book = validated_data.pop('book')
+        book = Book.objects.create(**book)
+        event = Event.objects.create(**validated_data)
+        event.book = book
+        event.save()
+        return event
 
     class Meta:
         model = Event
