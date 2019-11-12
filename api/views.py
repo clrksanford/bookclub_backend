@@ -13,7 +13,7 @@ class EventViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def rsvp(self, request, pk=None):
         event = self.get_object()
-        username = 'clrksanford'
+        username = request.data.get('username', '')
         user = User.objects.filter(username=username).first()
         user.events.add(event)
         user.save()
