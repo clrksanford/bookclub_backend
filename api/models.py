@@ -20,3 +20,6 @@ class User(models.Model):
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=20)
     events = models.ManyToManyField('Event', related_name='attendees', blank=True)
+
+    def __str__(self):
+        return '{0} {1}'.format(self.first_name, self.last_name)

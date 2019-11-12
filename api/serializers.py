@@ -10,6 +10,7 @@ class BookSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     book = BookSerializer(many=False)
+    attendees = serializers.StringRelatedField(many=True)
 
     def create(self, validated_data):
         book = validated_data.pop('book')
