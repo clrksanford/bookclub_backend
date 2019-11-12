@@ -19,4 +19,4 @@ class User(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=20)
-    books = models.ManyToManyField('Book', related_name='attendees')
+    events = models.ManyToManyField('Event', related_name='attendees')
